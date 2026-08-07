@@ -1,0 +1,45 @@
+Name :Tatheer Zahra
+Roll NO:165
+
+
+ Question 4: DELETE Operation
+
+#include <iostream>
+#include <fstream>
+#include <cstdio> // for remove() and rename()
+using namespace std;
+int main() {
+ifstream file; // original file (read)
+ofstream tempFile; // temporary file (write)
+file.open("students.txt");
+tempFile.open("temp.txt"); // Check if file opened
+if (!file || !tempFile) {
+cout << "Error opening file!" << endl;
+return 1;
+}
+int searchRoll;
+cout << "Enter Roll No to delete: ";
+cin >> searchRoll;
+int rollNo;
+string name;
+float marks;
+bool found = false;
+// Read original file and copy data except target
+while (file >> rollNo >> name >> marks) {
+if (rollNo == searchRoll) {
+found = true; // skip this record } else {
+tempFile << rollNo << " " << name << " " << marks << endl;
+}
+}
+file.close();
+tempFile.close();
+// Delete original file
+remove("students.txt");
+// Rename temp file to original file name
+rename("temp.txt", "students.txt");
+if (found) {
+cout << "Record deleted successfully!" << endl;
+} else {
+cout << "Roll No not found!" << endl;
+}
+return 0; }
