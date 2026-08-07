@@ -1,0 +1,47 @@
+Name :Tatheer Zahra
+Roll NO:165
+
+
+Question 3: UPDATE Operation
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main() {
+fstream file;
+// Open file for both reading and writing
+file.open("students.txt", ios::in | ios::out);
+if (!file) {
+cout << "Error: Unable to open file!" << endl;
+return 1;
+}
+int searchRoll;
+float newMarks;
+cout << "Enter Roll No to update: ";
+cin >> searchRoll; cout << "Enter new Marks: ";
+cin >> newMarks;
+int rollNo;
+string name;
+float marks;
+bool found = false;
+// Store current position
+streampos pos;
+// Read file record by record
+while (file >> rollNo >> name >> marks) {
+// Save position BEFORE writing next record
+pos = file.tellg();
+if (rollNo == searchRoll) {
+found = true;
+// Move write pointer back to start of this record file.seekp(pos - streamoff(name.length() + 20));
+// Overwrite record (same format)
+file << rollNo << " " << name << " " << newMarks;
+cout << "Record updated successfully!" << endl;
+break;
+}
+}
+if (!found) {
+cout << "Roll No not found!" << endl;
+}
+file.close();
+return 0;
+}
