@@ -1,39 +1,6 @@
 Name :Tatheer Zahra
 Roll NO:165
 
-Question 1: CREATE Operation
-
-#include <iostream>
-#include <fstream>
-using namespace std;
-int main() {
-// Create file object
-ofstream file;
-// Open file in output mode
-file.open("students.txt");
-// Check if file opened successfully
-if (!file) {
-cout << "Error creating file!" << endl; return 1;
-}
-int rollNo;
-string name;
-float marks;
-// Loop to take input for 5 students
-for (int i = 1; i <= 3; i++) {
-cout << "\nEnter details for Student " << i << endl;
-cout << "Roll No: ";
-cin >> rollNo;
-cout << "Name: ";
-cin >> name;
-cout << "Marks: ";
-cin >> marks;
-// Write data to file (one record per line) file << rollNo << " " << name << " " << marks << endl;
-}
-// Close the file
-file.close();
-cout << "\nData saved successfully in students.txt file!" << endl;
-return 0;
-} 
 
 Question 2: READ (Display) Operation
 
