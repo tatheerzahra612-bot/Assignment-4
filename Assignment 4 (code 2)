@@ -1,0 +1,73 @@
+Name :Tatheer Zahra
+Roll NO:165
+
+Question 1: CREATE Operation
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main() {
+// Create file object
+ofstream file;
+// Open file in output mode
+file.open("students.txt");
+// Check if file opened successfully
+if (!file) {
+cout << "Error creating file!" << endl; return 1;
+}
+int rollNo;
+string name;
+float marks;
+// Loop to take input for 5 students
+for (int i = 1; i <= 3; i++) {
+cout << "\nEnter details for Student " << i << endl;
+cout << "Roll No: ";
+cin >> rollNo;
+cout << "Name: ";
+cin >> name;
+cout << "Marks: ";
+cin >> marks;
+// Write data to file (one record per line) file << rollNo << " " << name << " " << marks << endl;
+}
+// Close the file
+file.close();
+cout << "\nData saved successfully in students.txt file!" << endl;
+return 0;
+} 
+
+Question 2: READ (Display) Operation
+
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+using namespace std;
+int main() {
+ifstream file;
+// Open file in input mode
+file.open("students.txt");
+// Check if file opened successfully
+if (!file) {
+cout << "Error: Unable to open students.txt file!" << endl;
+return 1;
+}
+int rollNo; string name;
+float marks;
+int count = 0;
+// Table Header
+cout << "\n----- Student Records -----\n";
+cout << left << setw(10) << "RollNo"
+<< setw(15) << "Name"
+<< setw(10) << "Marks" << endl;
+cout << "----------------------------------\n";
+// Read file until EOF
+while (file >> rollNo >> name >> marks) {
+cout << left << setw(10) << rollNo
+<< setw(15) << name
+<< setw(10) << marks << endl;
+count++; // increment record count
+} // Close file
+file.close();
+// Display total records
+cout << "\nTotal Records: " << count << endl;
+return 0;
+}
